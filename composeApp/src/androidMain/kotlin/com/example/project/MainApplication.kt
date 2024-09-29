@@ -12,16 +12,7 @@ class MainApplication : Application() {
       androidContext(this@MainApplication)
       modules(appModule)
     }
-
-    //Thread.setDefaultUncaughtExceptionHandler(object: Thread.UncaughtExceptionHandler {
-    //  override fun uncaughtException(t: Thread, e: Throwable) {
-    //    println("----------------- EXCEPTION HERE -----------------")
-    //    e.printStackTrace()
-    //    System.exit(1)
-    //  }
-    //})
   }
-
 
 
 }

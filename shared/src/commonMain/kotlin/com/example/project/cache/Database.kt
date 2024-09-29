@@ -61,7 +61,13 @@ internal class Database(databaseDriverFactory: DatabaseDriverFactory) {
         println("--------------- Getting All Launches ---------------")
         val queryMake = DAO.selectAllLaunchesInfo()
         println("----------- BEFORE QUERY EXECUTE: ${queryMake} ------------")
-        val output = queryMake.runOn(database)
+        val output =
+            try {
+                queryMake.runOn(database)
+            } catch (e: IllegalArgumentException) {
+                println("--------------- ERROR: ${e} ---------------")
+                throw e
+            }
         println("--------------- All Launches ---------------:\n${output}")
         return output
     }

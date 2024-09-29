@@ -12,12 +12,12 @@ data class RocketLaunch(
     val flightNumber: Int,
     @SerialName("name")
     val missionName: String,
-    @SerialName("date_utc")
-    val launchDateUTC: String,
     @SerialName("details")
     val details: String?,
     @SerialName("success")
     val launchSuccess: Boolean?,
+    @SerialName("date_utc")
+    val launchDateUTC: String,
     @SerialName("links")
     val links: Links
 ) {
