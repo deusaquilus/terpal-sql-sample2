@@ -5,6 +5,7 @@ import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 
 @Serializable
 data class RocketLaunch(
@@ -21,6 +22,7 @@ data class RocketLaunch(
     @SerialName("links")
     val links: Links
 ) {
+    @Transient
     var launchYear = launchDateUTC.toInstant().toLocalDateTime(TimeZone.UTC).year
 }
 

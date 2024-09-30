@@ -9,17 +9,6 @@ import io.exoquery.sql.TerpalDriver
 import io.exoquery.sql.android.TerpalAndroidDriver
 
 class AndroidDatabaseDriverFactory(private val context: Context) : DatabaseDriverFactory {
-    override fun createTerpalDriver(): TerpalDriver {
-        val factory = FrameworkSQLiteOpenHelperFactory()
-        val openHelper = factory.create(
-            SupportSQLiteOpenHelper.Configuration.builder(context)
-                .name("launch.db")
-                .noBackupDirectory(true)
-                .callback(AndroidSqliteDriver.Callback(AppDatabase.Schema))
-                .build(),
-        )
-        return TerpalAndroidDriver.fromSingleOpenHelper(openHelper)
-        //return TerpalAndroidDriver.fromApplicationContext("launch.db", context, LaunchSchema)
-    }
-
+    override fun createTerpalDriver(): TerpalDriver =
+        TerpalAndroidDriver.fromApplicationContext("launch.db", context, LaunchSchema)
 }
